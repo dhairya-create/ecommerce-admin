@@ -22,9 +22,8 @@ import toast from "react-hot-toast";
 import axios from "axios";
 import { useParams, useRouter } from "next/navigation";
 import { AlertModal } from "@/components/modals/alert-modal";
-import { ApiAlert } from "@/components/ui/api-alert";
-import { useOrigin } from "@/hooks/use-origin";
-import ImageUpload from "@/components/ui/image-upload";
+
+
 
 interface SizeFormProps {
   initialData: Size | null;
@@ -47,7 +46,7 @@ export const SizeForm: React.FC<SizeFormProps> = ({ initialData }) => {
 
   const params = useParams();
   const router = useRouter();
-  const origin = useOrigin();
+ 
 
   const form = useForm<SizeFormValues>({
     resolver: zodResolver(formSchema),
@@ -72,7 +71,7 @@ export const SizeForm: React.FC<SizeFormProps> = ({ initialData }) => {
       router.refresh();
       router.push(`/${params.storeId}/sizes`);
       toast.success(toastMessage);
-    } catch (error) {
+    } catch  {
       toast.error("Something went wrong");
     } finally {
       setLoading(false);
@@ -88,7 +87,7 @@ export const SizeForm: React.FC<SizeFormProps> = ({ initialData }) => {
       router.refresh();
       router.push(`/${params.storeId}/sizes`);
       toast.success("Size Deleted");
-    } catch (error) {
+    } catch  {
       toast.error(
         "Make sure you removed all products using this size first"
       );

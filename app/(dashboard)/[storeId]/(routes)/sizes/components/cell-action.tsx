@@ -34,10 +34,8 @@ export const CellAction: React.FC<CellActionProps> = ({ data }) => {
       await axios.delete(`/api/${params.storeId}/sizes/${data.id}`);
       router.refresh();
       toast.success("Size Deleted");
-    } catch (error) {
-      toast.error(
-        "Make sure you removed all products using this size first"
-      );
+    } catch {
+      toast.error("Make sure you removed all products using this size first");
     } finally {
       setLoading(false);
       setOpen(false);
@@ -68,9 +66,7 @@ export const CellAction: React.FC<CellActionProps> = ({ data }) => {
           </DropdownMenuItem>
 
           <DropdownMenuItem
-            onClick={() =>
-              router.push(`/${params.storeId}/sizes/${data?.id}`)
-            }
+            onClick={() => router.push(`/${params.storeId}/sizes/${data?.id}`)}
           >
             <Edit className="mr-2 h-4 w-4" />
             Update

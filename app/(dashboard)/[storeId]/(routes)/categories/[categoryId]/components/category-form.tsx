@@ -80,8 +80,8 @@ export const CategoryForm: React.FC<CategoryFormProps> = ({
       router.refresh();
       router.push(`/${params.storeId}/categories`);
       toast.success(toastMessage);
-    } catch (error) {
-      console.log(error);
+    } catch  {
+    
       
       toast.error("Something went wrong");
     } finally {
@@ -98,8 +98,8 @@ export const CategoryForm: React.FC<CategoryFormProps> = ({
       router.refresh();
       router.push(`/${params.storeId}/categories`);
       toast.success("Category Deleted");
-    } catch (error) {
-      console.log(error);
+    } catch  {
+     
       
       toast.error(
         "Make sure you removed all products using this category first"

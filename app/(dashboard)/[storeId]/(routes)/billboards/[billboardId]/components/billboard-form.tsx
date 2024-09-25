@@ -47,7 +47,6 @@ export const BillboardForm: React.FC<BillboardFormProps> = ({
 
   const params = useParams();
   const router = useRouter();
- 
 
   const form = useForm<BillboardFormValues>({
     resolver: zodResolver(formSchema),
@@ -72,9 +71,7 @@ export const BillboardForm: React.FC<BillboardFormProps> = ({
       router.refresh();
       router.push(`/${params.storeId}/billboards`);
       toast.success(toastMessage);
-    } catch (error) {
-      console.log(error);
-      
+    } catch {
       toast.error("Something went wrong");
     } finally {
       setLoading(false);
@@ -90,9 +87,7 @@ export const BillboardForm: React.FC<BillboardFormProps> = ({
       router.refresh();
       router.push(`/${params.storeId}/billboards`);
       toast.success("Billboard Deleted");
-    } catch (error) {
-      console.log(error);
-      
+    } catch {
       toast.error(
         "Make sure you removed all categories using this billboard first"
       );
@@ -173,7 +168,7 @@ export const BillboardForm: React.FC<BillboardFormProps> = ({
           </Button>
         </form>
       </Form>
-      
+
       {/* <ApiAlert title="NEXT_PUBLIC_API_URL" variant="public" description={`${origin}/api/${params.storeId}`} /> */}
     </>
   );
