@@ -22,9 +22,8 @@ import toast from "react-hot-toast";
 import axios from "axios";
 import { useParams, useRouter } from "next/navigation";
 import { AlertModal } from "@/components/modals/alert-modal";
-import { ApiAlert } from "@/components/ui/api-alert";
-import { useOrigin } from "@/hooks/use-origin";
-import ImageUpload from "@/components/ui/image-upload";
+
+
 
 interface ColorFormProps {
   initialData: Color | null;
@@ -50,7 +49,7 @@ export const ColorForm: React.FC<ColorFormProps> = ({ initialData }) => {
 
   const params = useParams();
   const router = useRouter();
-  const origin = useOrigin();
+  
 
   const form = useForm<ColorFormValues>({
     resolver: zodResolver(formSchema),
@@ -73,6 +72,8 @@ export const ColorForm: React.FC<ColorFormProps> = ({ initialData }) => {
       router.push(`/${params.storeId}/colors`);
       toast.success(toastMessage);
     } catch (error) {
+      console.log(error);
+      
       toast.error("Something went wrong");
     } finally {
       setLoading(false);
@@ -87,6 +88,8 @@ export const ColorForm: React.FC<ColorFormProps> = ({ initialData }) => {
       router.push(`/${params.storeId}/colors`);
       toast.success("Color Deleted");
     } catch (error) {
+      console.log(error);
+      
       toast.error("Make sure you removed all products using this color first");
     } finally {
       setLoading(false);

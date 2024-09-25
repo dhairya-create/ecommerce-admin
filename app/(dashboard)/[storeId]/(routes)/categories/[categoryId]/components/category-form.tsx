@@ -22,9 +22,6 @@ import toast from "react-hot-toast";
 import axios from "axios";
 import { useParams, useRouter } from "next/navigation";
 import { AlertModal } from "@/components/modals/alert-modal";
-import { ApiAlert } from "@/components/ui/api-alert";
-import { useOrigin } from "@/hooks/use-origin";
-import ImageUpload from "@/components/ui/image-upload";
 import {
   Select,
   SelectContent,
@@ -58,7 +55,7 @@ export const CategoryForm: React.FC<CategoryFormProps> = ({
 
   const params = useParams();
   const router = useRouter();
-  const origin = useOrigin();
+ 
 
   const form = useForm<CategoryFormValues>({
     resolver: zodResolver(formSchema),
@@ -84,6 +81,8 @@ export const CategoryForm: React.FC<CategoryFormProps> = ({
       router.push(`/${params.storeId}/categories`);
       toast.success(toastMessage);
     } catch (error) {
+      console.log(error);
+      
       toast.error("Something went wrong");
     } finally {
       setLoading(false);
@@ -100,6 +99,8 @@ export const CategoryForm: React.FC<CategoryFormProps> = ({
       router.push(`/${params.storeId}/categories`);
       toast.success("Category Deleted");
     } catch (error) {
+      console.log(error);
+      
       toast.error(
         "Make sure you removed all products using this category first"
       );

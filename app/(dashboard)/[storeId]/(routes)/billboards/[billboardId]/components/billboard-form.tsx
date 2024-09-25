@@ -22,8 +22,6 @@ import toast from "react-hot-toast";
 import axios from "axios";
 import { useParams, useRouter } from "next/navigation";
 import { AlertModal } from "@/components/modals/alert-modal";
-import { ApiAlert } from "@/components/ui/api-alert";
-import { useOrigin } from "@/hooks/use-origin";
 import ImageUpload from "@/components/ui/image-upload";
 
 interface BillboardFormProps {
@@ -49,7 +47,7 @@ export const BillboardForm: React.FC<BillboardFormProps> = ({
 
   const params = useParams();
   const router = useRouter();
-  const origin = useOrigin();
+ 
 
   const form = useForm<BillboardFormValues>({
     resolver: zodResolver(formSchema),
@@ -75,6 +73,8 @@ export const BillboardForm: React.FC<BillboardFormProps> = ({
       router.push(`/${params.storeId}/billboards`);
       toast.success(toastMessage);
     } catch (error) {
+      console.log(error);
+      
       toast.error("Something went wrong");
     } finally {
       setLoading(false);
@@ -91,6 +91,8 @@ export const BillboardForm: React.FC<BillboardFormProps> = ({
       router.push(`/${params.storeId}/billboards`);
       toast.success("Billboard Deleted");
     } catch (error) {
+      console.log(error);
+      
       toast.error(
         "Make sure you removed all categories using this billboard first"
       );
@@ -140,7 +142,7 @@ export const BillboardForm: React.FC<BillboardFormProps> = ({
                     value={field.value ? [field.value] : []}
                     disabled={loading}
                     onChange={(url) => field.onChange(url)}
-                    onRemove={(url) => field.onChange("")}
+                    onRemove={() => field.onChange("")}
                   />
                 </FormControl>
                 <FormMessage />
