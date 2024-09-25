@@ -3,15 +3,14 @@
   "rules": {
     "react/jsx-uses-react": "off", // Not needed with React 17+
     "react/react-in-jsx-scope": "off", // Not needed with React 17+
-    "no-console": "off", // Warn instead of error for console logs
+    "no-console": "warn", // Warn instead of error for console logs
     "import/no-anonymous-default-export": "warn", // Warn about anonymous exports
-    // Turn off all other rules
-    "no-unused-vars": "off",
-    "eqeqeq": "off",
-    "react/prop-types": "off",
-    "no-empty": "off",
-    "no-undef": "off",
-    "react/jsx-no-undef": "off"
-  },
-  "ignorePatterns": ["**/*.js", "**/*.ts", "**/*.jsx", "**/*.tsx"] // Ignore all JS and TS files
+    // Keep important rules enabled
+    "no-unused-vars": "warn", // Warn instead of off
+    "eqeqeq": "warn", // Warn instead of off
+    "react/prop-types": "off", // Depending on your use case, you can leave this off
+    "no-empty": "warn", // Warn instead of off
+    "no-undef": "warn", // Warn instead of off
+    "react/jsx-no-undef": "warn" // Warn instead of off
+  }
 }
