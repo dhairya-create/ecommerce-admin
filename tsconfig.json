@@ -1,26 +1,33 @@
 {
   "compilerOptions": {
-    "lib": ["dom", "dom.iterable", "esnext"],
-    "allowJs": true,
-    "skipLibCheck": true,
-    "strict": true,
-    "noEmit": true,
-    "esModuleInterop": true,
-    "module": "esnext",
-    "moduleResolution": "bundler",
-    "resolveJsonModule": true,
-    "isolatedModules": true,
-    "jsx": "preserve",
-    "incremental": true,
+    "target": "esnext", // Target latest version of ECMAScript for modern JS features
+    "lib": ["dom", "dom.iterable", "esnext"], // Include DOM and ESNext features
+    "allowJs": true, // Allow JavaScript files in the project
+    "skipLibCheck": true, // Skip type checking for library declaration files
+    "strict": true, // Enable all strict type-checking options
+    "noEmit": true, // Do not emit JavaScript files on compilation
+    "esModuleInterop": true, // Ensure ES module interoperability for imports
+    "module": "esnext", // Use ESNext module resolution
+    "moduleResolution": "bundler", // Ensure compatibility with bundlers like Webpack
+    "resolveJsonModule": true, // Allow importing JSON files
+    "isolatedModules": true, // Ensures each file is treated as an isolated module
+    "jsx": "preserve", // Preserve JSX as it is (Next.js will handle it)
+    "incremental": true, // Speed up incremental builds
+    "allowSyntheticDefaultImports": true, // Allow default imports from modules with no default export
     "plugins": [
       {
-        "name": "next"
+        "name": "next" // Next.js TypeScript plugin to ensure smooth integration
       }
     ],
     "paths": {
-      "@/*": ["./*"]
+      "@/*": ["./*"] // Enable path aliasing for simpler imports
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
-  "exclude": ["node_modules"]
+  "include": [
+    "next-env.d.ts", // Next.js environment types
+    "**/*.ts", // Include all TypeScript files
+    "**/*.tsx", // Include all TypeScript + JSX files
+    ".next/types/**/*.ts" // Include Next.js specific types
+  ],
+  "exclude": ["node_modules"] // Exclude node_modules from compilation
 }
