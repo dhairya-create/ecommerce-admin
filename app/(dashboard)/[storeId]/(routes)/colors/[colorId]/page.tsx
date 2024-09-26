@@ -1,7 +1,7 @@
 import prismadb from "@/lib/prismadb";
 import { ColorForm } from "./components/color-form";
 
-export const SizePage = async ({
+ const SizePage = async ({
   params,
 }: {
   params: { colorId: string };
